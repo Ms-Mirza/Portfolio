@@ -1,42 +1,36 @@
+import { profile } from "../data/profile";
 
 function Hero() {
   return (
     <section className="hero" id="home">
-      <p className="eyebrow">
-        SOFTWARE ENGINEERING STUDENT
-      </p>
+      <p className="eyebrow">SOFTWARE ENGINEERING STUDENT</p>
 
       <h1>
-        Building intelligent solutions
+        {profile.headlineStart}
         <br />
-        to <span>real-world problems.</span>
+        <span>{profile.headlineEnd}</span>
       </h1>
 
-      <p className="intro">
-        I'm Mirza Mohammad Salah Uddin, a Software
-        Engineering student at Daffodil International
-        University, exploring Machine Learning, Data
-        Science, AI Agents, and Automation.
-      </p>
+      <p className="intro">{profile.introduction}</p>
 
       <div className="hero-actions">
         <a className="button primary" href="#projects">
           Explore Projects ↗
         </a>
 
-        <a
-          className="button secondary"
-          href="#contact"
-        >
+        <a className="button secondary" href="#contact">
           Get in Touch ↗
+        </a>
+
+        <a className="button secondary" href="/mirza-resume.pdf" download>
+          Download Resume ↓
         </a>
       </div>
 
       <div className="interests">
-        <span>Python</span>
-        <span>Machine Learning</span>
-        <span>Data Science</span>
-        <span>AI Agents</span>
+        {profile.interests.map((interest) => (
+          <span key={interest}>{interest}</span>
+        ))}
       </div>
     </section>
   );

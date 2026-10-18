@@ -1,16 +1,20 @@
+import { profile } from "../data/profile";
 
 function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="navbar">
       <a className="logo" href="#home">
-        Salah<span>.</span>
+        {profile.shortName}<span>.</span>
       </a>
 
       <nav aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#interests">AI/ML</a>
         <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <button
@@ -27,3 +31,4 @@ function Navbar({ theme, onToggleTheme }) {
 }
 
 export default Navbar;
+

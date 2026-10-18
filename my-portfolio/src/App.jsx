@@ -5,16 +5,31 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import Interests from "./components/Interests";
 import Projects from "./components/Projects";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 import "./index.css";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("portfolio-theme") || "dark";
+    } catch {
+      return "dark";
+    }
+  });
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+
+    try {
+      localStorage.setItem("portfolio-theme", theme);
+    } catch {
+      // The website still works if storage is unavailable.
+    }
   }, [theme]);
 
   function toggleTheme() {
@@ -34,7 +49,10 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Interests />
         <Projects />
+        <Education />
+        <Contact />
       </main>
 
       <Footer />

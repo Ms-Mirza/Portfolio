@@ -1,28 +1,47 @@
 
 export const skillGroups = [
   {
-    title: "Programming",
-    description: "Programming fundamentals and problem solving",
-    skills: ["Python", "Java", "C", "JavaScript"],
+    title: "Programming & Web",
+    description: "Languages and web fundamentals",
+    skills: [
+      "C",
+      "Python",
+      "JavaScript",
+      "HTML",
+      "CSS",
+    ],
   },
   {
     title: "Data & Analytics",
     description: "Working with and exploring data",
     skills: ["Pandas", "NumPy", "Matplotlib", "SQL", "MySQL"],
   },
-  {
-    title: "AI & Machine Learning",
-    description: "Current learning and exploration",
+ {
+    title: "Tools & Platforms",
+    description: "Development and productivity tools",
     skills: [
-      "Machine Learning Fundamentals",
-      "Data Science",
-      "AI Agents",
-      "Automation",
+      "GitHub",
+      "VS Code",
+      "Notion",
+      "Canva",
+      "Slack",
     ],
   },
   {
-    title: "Tools & Development",
-    description: "Tools used in software development",
-    skills: ["Git", "GitHub", "VS Code", "Chrome Extensions"],
+    title: "AI Tools",
+    description: "Tools you have explored or used",
+    skills: [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Google AI Studio",
+    ],
   },
+];
+
+export const areasOfInterest = [
+  "Machine Learning",
+  "Data Science",
+  "AI Agents",
+  "Automation Systems",
 ];

@@ -1,7 +1,7 @@
 
 function Footer() {
   return (
-    <footer id="contact">
+    <footer>
       <p>
         Designed and built by Mirza Mohammad Salah Uddin.
       </p>
