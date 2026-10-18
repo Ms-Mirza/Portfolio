@@ -1,10 +1,13 @@
 
 import { profile } from "../data/profile";
+import profilePic from "../assets/pic.png";
 
 function Hero() {
   return (
     <section className="hero hero-layout" id="home">
+            
       <div className="hero-copy">
+        
         <p className="eyebrow">
           SOFTWARE ENGINEERING STUDENT
         </p>
@@ -38,8 +41,11 @@ function Hero() {
           ))}
         </div>
       </div>
-
+      
       <div className="hero-visual" aria-label="Illustration of an AI and data workflow">
+          <div className="hero-photo">
+  <img src={profilePic} alt="My profile photo" />
+</div>
         <div className="visual-glow" />
 
         <div className="visual-window">
@@ -74,7 +80,9 @@ function Hero() {
         <div className="floating-chip chip-bottom">
           <span>✳</span> AI & Automation
         </div>
+        
       </div>
+      
     </section>
   );
 }

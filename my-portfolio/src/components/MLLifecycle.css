@@ -1,0 +1,276 @@
+.ml-section {
+  --ml-bg: var(--bg);
+  --ml-line: var(--border);
+  --ml-face: var(--surface);
+  --ml-text: var(--text);
+  --ml-acc: var(--accent);
+  --ml-panel: var(--bg);
+
+  margin: 70px auto;
+  max-width: 820px;
+  padding: 16px;
+  color: var(--ml-text);
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  background-color: var(--ml-bg);
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 9%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+
+  border: 1px solid var(--ml-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ml-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.ml-intro {
+  margin: 38px 0 22px;
+}
+
+.ml-eyebrow,
+.ml-trace-label,
+.ml-accuracy,
+.ml-footnote {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.ml-eyebrow {
+  color: var(--ml-acc);
+}
+
+.ml-intro h2 {
+  margin: 12px 0;
+  color: var(--ml-acc);
+  font-size: clamp(21px, 4vw, 30px);
+  letter-spacing: -0.04em;
+}
+
+.ml-intro > p:last-child {
+  max-width: 600px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.ml-diagram {
+  width: 100%;
+}
+
+.ml-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ml-connection {
+  stroke: var(--ml-line);
+  stroke-width: 1.5;
+  opacity: 0.5;
+  transition: stroke 0.4s ease, opacity 0.4s ease;
+}
+
+.ml-connection.dashed {
+  stroke-dasharray: 6 6;
+}
+
+.ml-connection.on {
+  stroke: var(--ml-acc);
+  opacity: 1;
+}
+
+.ml-cube-face {
+  fill: var(--ml-face);
+  stroke: var(--ml-line);
+  stroke-width: 1.2;
+  transition: stroke 0.4s ease;
+}
+
+.ml-node {
+  --node-text: var(--ml-text);
+}
+
+.ml-node.on {
+  --node-text: var(--ml-acc);
+}
+
+.ml-glow {
+  fill: var(--ml-acc);
+  fill-opacity: 0;
+  stroke: var(--ml-acc);
+  stroke-opacity: 0;
+  transition: fill-opacity 0.4s ease, stroke-opacity 0.4s ease;
+}
+
+.ml-node.on .ml-glow {
+  fill-opacity: 0.08;
+  stroke-opacity: 0.4;
+}
+
+.ml-node.on .ml-cube-face {
+  stroke: var(--ml-acc);
+}
+
+.ml-node-icon {
+  fill: var(--node-text);
+  font-size: 20px;
+  transition: fill 0.4s ease;
+}
+
+.ml-label-box {
+  fill: var(--ml-panel);
+  stroke: var(--ml-line);
+  stroke-width: 1;
+  transition: stroke 0.4s ease;
+}
+
+.ml-node.on .ml-label-box {
+  stroke: var(--ml-acc);
+}
+
+.ml-node-label {
+  fill: var(--node-text);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  transition: fill 0.4s ease;
+}
+
+.ml-loop-label {
+  fill: var(--ml-line);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.ml-travel-dot {
+  fill: var(--ml-acc);
+}
+
+.ml-trace {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: var(--ml-panel);
+  border: 1px solid var(--ml-line);
+  border-radius: 8px;
+}
+
+.ml-trace-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ml-trace-label {
+  color: var(--ml-acc);
+}
+
+.ml-caption {
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.ml-progress-track {
+  height: 4px;
+  margin-top: 16px;
+  background: var(--ml-line);
+  overflow: hidden;
+}
+
+.ml-progress-fill {
+  height: 100%;
+  background: var(--ml-acc);
+  transition: width 0.5s ease;
+}
+
+.ml-accuracy {
+  margin-bottom: 0;
+  font-size: 9px;
+}
+
+.ml-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.ml-controls button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--ml-line);
+  border-radius: 5px;
+  background: var(--ml-face);
+  color: var(--ml-acc);
+  font: inherit;
+  cursor: pointer;
+}
+
+.ml-controls button:hover,
+.ml-controls button:focus-visible {
+  border-color: var(--ml-acc);
+  outline: none;
+}
+
+.ml-footnote {
+  margin-top: 18px;
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+
+
+@media (max-width: 520px) {
+  .ml-section {
+    padding: 10px;
+    margin: 40px auto;
+  }
+
+  .ml-header {
+    font-size: 10px;
+  }
+
+  .ml-trace {
+    align-items: flex-start;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .ml-controls {
+    gap: 5px;
+  }
+
+  .ml-controls button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ml-caption {
+    font-size: 11px;
+  }
+
+  .ml-node-label {
+    font-size: 10px;
+  }
+
+  .ml-loop-label {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-section *,
+  .ml-section *::before,
+  .ml-section *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

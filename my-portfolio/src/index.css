@@ -676,12 +676,12 @@ footer a:hover {
 
 .chip-top {
   top: 12%;
-  right: -3%;
+  right: -5%;
 }
 
 .chip-bottom {
-  bottom: 15%;
-  left: -7%;
+  bottom: 10%;
+  left: 9%;
 }
 
 /* ---------- Theme-aware backgrounds ---------- */
@@ -843,5 +843,44 @@ footer a:hover {
   .button {
     transform: none;
     transition: none;
+  }
+}
+/* ---------- Profile photo ---------- */
+.hero-photo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.hero-photo img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 30%;
+  border: 3px solid var(--accent);
+  padding: 5px;
+  background: var(--surface);
+  box-shadow: 0 10px 35px rgb(0 0 0 / 15%);
+  transition: transform 0.25s ease;
+}
+
+.hero-photo img:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+  .hero-photo img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo img {
+    transition: none;
+  }
+
+  .hero-photo img:hover {
+    transform: none;
   }
 }
