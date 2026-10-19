@@ -1,7 +1,7 @@
 
 export const profile = {
     name: "Mirza Mohammad Salah Uddin",
-    shortName: "Salah",
+    shortName: "MS",
     role: "Aspiring AI Engineer",
 
     university: "Daffodil International University",
