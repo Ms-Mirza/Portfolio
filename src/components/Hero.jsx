@@ -1,16 +1,11 @@
-
 import { profile } from "../data/profile";
 import profilePic from "../assets/pic.png";
 
 function Hero() {
   return (
     <section className="hero hero-layout" id="home">
-            
       <div className="hero-copy">
-        
-        <p className="eyebrow">
-          SOFTWARE ENGINEERING STUDENT
-        </p>
+        <p className="eyebrow">SOFTWARE ENGINEERING STUDENT</p>
 
         <h1>
           {profile.headlineStart}
@@ -27,9 +22,17 @@ function Hero() {
 
           <a
             className="button secondary"
+            href="/mirza-resume.pdf"
+            download="Mirza-Mohammad-Salah-Uddin-Resume.pdf"
+          >
+            Download Resume ↓
+          </a>
+
+          <a
+            className="button secondary"
             href={profile.links.github}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             GitHub ↗
           </a>
@@ -41,11 +44,14 @@ function Hero() {
           ))}
         </div>
       </div>
-      
-      <div className="hero-visual" aria-label="Illustration of an AI and data workflow">
-          <div className="hero-photo">
-  <img src={profilePic} alt="My profile photo" />
-</div>
+
+      <div
+        className="hero-visual"
+        aria-label="Illustration of an AI and data workflow"
+      >
+        <div className="hero-photo">
+          <img src={profilePic} alt="My profile photo" />
+        </div>
         <div className="visual-glow" />
 
         <div className="visual-window">
@@ -59,10 +65,18 @@ function Hero() {
           </div>
 
           <div className="visual-code">
-            <p><span>01</span> <b>focus</b> = "AI Engineering"</p>
-            <p><span>02</span> <b>learn</b>("Machine Learning")</p>
-            <p><span>03</span> <b>build</b>("Useful Solutions")</p>
-            <p><span>04</span> <b>improve</b>(every_day=True)</p>
+            <p>
+              <span>01</span> <b>focus</b> = "AI Engineering"
+            </p>
+            <p>
+              <span>02</span> <b>learn</b>("Machine Learning")
+            </p>
+            <p>
+              <span>03</span> <b>build</b>("Useful Solutions")
+            </p>
+            <p>
+              <span>04</span> <b>improve</b>(every_day=True)
+            </p>
           </div>
 
           <div className="visual-divider" />
@@ -80,9 +94,7 @@ function Hero() {
         <div className="floating-chip chip-bottom">
           <span>✳</span> AI & Automation
         </div>
-        
       </div>
-      
     </section>
   );
 }

@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import "./MLLifecycle.css";
 
@@ -13,40 +12,64 @@ const nodes = [
 
 const steps = [
   {
-    from: 0, to: 1,
+    from: 0,
+    to: 1,
     caption: "Collect and load raw data",
     accuracy: 0,
-    points: [[167, 130], [363, 130]],
+    points: [
+      [167, 130],
+      [363, 130],
+    ],
   },
   {
-    from: 1, to: 2,
+    from: 1,
+    to: 2,
     caption: "Clean, impute, split train/test",
     accuracy: 0,
-    points: [[437, 130], [633, 130]],
+    points: [
+      [437, 130],
+      [633, 130],
+    ],
   },
   {
-    from: 2, to: 3,
+    from: 2,
+    to: 3,
     caption: "Engineer features and encode",
     accuracy: 0,
-    points: [[670, 170], [670, 340]],
+    points: [
+      [670, 170],
+      [670, 340],
+    ],
   },
   {
-    from: 3, to: 4,
+    from: 3,
+    to: 4,
     caption: "Fit the model (loss falls each epoch)",
     accuracy: 62,
-    points: [[633, 380], [437, 380]],
+    points: [
+      [633, 380],
+      [437, 380],
+    ],
   },
   {
-    from: 4, to: 5,
+    from: 4,
+    to: 5,
     caption: "Validate: accuracy 0.94, F1 0.92",
     accuracy: 94,
-    points: [[363, 380], [167, 380]],
+    points: [
+      [363, 380],
+      [167, 380],
+    ],
   },
   {
-    from: 5, to: 0,
+    from: 5,
+    to: 0,
     caption: "Monitor drift, collect new data, retrain",
     accuracy: 94,
-    points: [[130, 340], [130, 170]],
+    points: [
+      [130, 340],
+      [130, 170],
+    ],
     dashed: true,
   },
 ];
@@ -68,11 +91,7 @@ function Cube({ node, active }) {
 
       <g transform={`translate(${node.x} ${node.y})`}>
         {FACE_POLYGONS.map((points, index) => (
-          <polygon
-            key={index}
-            className="ml-cube-face"
-            points={points}
-          />
+          <polygon key={index} className="ml-cube-face" points={points} />
         ))}
       </g>
 
@@ -116,7 +135,7 @@ function MLLifecycle() {
   const [stepIndex, setStepIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [destinationLit, setDestinationLit] = useState(false);
-  const [dot, setDot] = useState({ x: 167, y: 130 });
+  const dotRef = useRef(null);
 
   const currentStep = steps[stepIndex];
 
@@ -133,6 +152,7 @@ function MLLifecycle() {
     const moveDuration = 1500;
     const waitDuration = 500;
     const totalDuration = moveDuration + waitDuration;
+    const pathLength = path.getTotalLength();
 
     function animate(timestamp) {
       if (!active) return;
@@ -145,16 +165,16 @@ function MLLifecycle() {
         elapsed += dt;
         elapsedRef.current = elapsed;
 
-        const pathLength = path.getTotalLength();
-
         if (elapsed <= moveDuration) {
           const progress = Math.min(elapsed / moveDuration, 1);
           const point = path.getPointAtLength(pathLength * progress);
-          setDot({ x: point.x, y: point.y });
+          dotRef.current?.setAttribute("cx", point.x);
+          dotRef.current?.setAttribute("cy", point.y);
           setDestinationLit(false);
         } else {
           const endPoint = path.getPointAtLength(pathLength);
-          setDot({ x: endPoint.x, y: endPoint.y });
+          dotRef.current?.setAttribute("cx", endPoint.x);
+          dotRef.current?.setAttribute("cy", endPoint.y);
           setDestinationLit(true);
         }
 
@@ -184,13 +204,12 @@ function MLLifecycle() {
     setStepIndex(0);
     setDestinationLit(false);
     setPaused(false);
-    setDot({ x: 167, y: 130 });
+    dotRef.current?.setAttribute("cx", 167);
+    dotRef.current?.setAttribute("cy", 130);
   }
 
   const activeNodes = new Set(
-    destinationLit
-      ? [currentStep.from, currentStep.to]
-      : [currentStep.from]
+    destinationLit ? [currentStep.from, currentStep.to] : [currentStep.from],
   );
 
   return (
@@ -204,8 +223,8 @@ function MLLifecycle() {
         <p className="ml-eyebrow">FROM DATA TO DEPLOYMENT</p>
         <h2>Inside the ML workflow</h2>
         <p>
-          An interactive illustration of a typical machine learning
-          pipeline, from raw data to deployment and retraining.
+          An interactive illustration of a typical machine learning pipeline,
+          from raw data to deployment and retraining.
         </p>
       </div>
 
@@ -247,17 +266,14 @@ function MLLifecycle() {
           </text>
 
           {nodes.map((node, index) => (
-            <Cube
-              key={node.name}
-              node={node}
-              active={activeNodes.has(index)}
-            />
+            <Cube key={node.name} node={node} active={activeNodes.has(index)} />
           ))}
 
           <circle
+            ref={dotRef}
             className="ml-travel-dot"
-            cx={dot.x}
-            cy={dot.y}
+            cx="167"
+            cy="130"
             r="5"
             filter="url(#ml-dot-glow)"
           />

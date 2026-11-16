@@ -884,3 +884,55 @@ footer a:hover {
     transform: none;
   }
 }
+
+
+/* Project highlights */
+
+.project-highlights {
+  margin: 18px 0;
+  padding-left: 20px;
+  color: var(--text-secondary, #a1a1aa);
+}
+
+.project-highlights li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.project-highlights li::marker {
+  color: var(--accent);
+}
+
+.project-card {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.project-links a:hover {
+  color: var(--accent);
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
